@@ -71,8 +71,8 @@ public class AnimalController {
      */
     @GetMapping("/{id}")
     @Operation(
-            summary = "Devuelve una animal",
-            description = "Servicio encargado de retornar una masxcotas con id ingresado por parámetro {id}.",
+            summary = "Devuelve un animal",
+            description = "Servicio encargado de retornar un animal con id ingresado por parámetro {id}.",
             tags = { "Animal-controller" },
             responses = {
                     @ApiResponse(
