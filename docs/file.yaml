@@ -1,0 +1,280 @@
+---
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:9000
+    description: Generated server url
+paths:
+  "/mascota/{id}":
+    get:
+      tags:
+        - Mascota-controller
+      summary: Devuelve una mascota
+      description: Servicio encargado de retornar una masxcotas con id ingresado por
+        parámetro {id}.
+      operationId: getOne
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Mascota"
+        '404':
+          description: Not found
+        '500':
+          description: Internal error
+    put:
+      tags:
+        - Mascota-controller
+      summary: Actualiza una Mascota
+      description: Servicio encargado de actualizar una mascota con el ID ingresado
+        por parámetro, retornando una mascota actualizada.
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Mascota"
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Mascota"
+        '400':
+          description: Bad request
+        '500':
+          description: Internal error
+    delete:
+      tags:
+        - Mascota-controller
+      summary: Elimina una Mascota
+      description: Servicio encargado de eliminar la mascota con el ID ingresado por
+        parámetro.
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Mascota"
+        '400':
+          description: Bad request
+        '500':
+          description: Internal error
+  "/animal/{id}":
+    get:
+      tags:
+        - Animal-controller
+      summary: Devuelve una animal
+      description: Servicio encargado de retornar una masxcotas con id ingresado por
+        parámetro {id}.
+      operationId: getOne_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Animal"
+        '404':
+          description: Not found
+        '500':
+          description: Internal error
+    put:
+      tags:
+        - Animal-controller
+      summary: Actualiza un animal
+      description: Servicio encargado de actualizar un animal con el ID ingresado
+        por parámetro, retornando un animal actualizado.
+      operationId: update_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Animal"
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Animal"
+        '400':
+          description: Bad request
+        '500':
+          description: Internal error
+    delete:
+      tags:
+        - Animal-controller
+      summary: Elimina una animal
+      description: Servicio encargado de eliminar el animal con el ID ingresado por
+        parámetro.
+      operationId: delete_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Animal"
+        '400':
+          description: Bad request
+        '500':
+          description: Internal error
+  "/mascota":
+    get:
+      tags:
+        - Mascota-controller
+      summary: 'Devuelve el listado: Mascota'
+      description: Servicio encargado de devolver el listado de mascotas.
+      operationId: getAll
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Mascota"
+        '404':
+          description: Not found
+        '500':
+          description: Internal error
+    post:
+      tags:
+        - Mascota-controller
+      summary: Persiste una Mascota
+      description: Servicio encargado de persistir una mascota, retornando la mascota
+        con el id asignado.
+      operationId: save
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Mascota"
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Mascota"
+        '400':
+          description: Bad request
+        '500':
+          description: Internal error
+  "/animal":
+    get:
+      tags:
+        - Animal-controller
+      summary: 'Devuelve el listado: animal'
+      description: Servicio encargado de devolver el listado de animales.
+      operationId: getAll_1
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Animal"
+        '404':
+          description: Not found
+        '500':
+          description: Internal error
+    post:
+      tags:
+        - Animal-controller
+      summary: Persiste un animal
+      description: Servicio encargado de persistir un animal, retornando el animal
+        con el id asignado.
+      operationId: save_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Animal"
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Animal"
+        '400':
+          description: Bad request
+        '500':
+          description: Internal error
+components:
+  schemas:
+    Animal:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        especie:
+          type: string
+    Mascota:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        tipoAnimal:
+          "$ref": "#/components/schemas/Animal"
+        edad:
+          type: integer
+          format: int32
